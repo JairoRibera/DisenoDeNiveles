@@ -27291,6 +27291,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7664607029713192134, guid: 517d53d0f6a4d4a498b5c3a4d2acef74, type: 3}
+      propertyPath: field of view
+      value: 60.000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664607029713192134, guid: 517d53d0f6a4d4a498b5c3a4d2acef74, type: 3}
+      propertyPath: m_FocalLength
+      value: 20.78461
+      objectReference: {fileID: 0}
+    - target: {fileID: 7664607029713192134, guid: 517d53d0f6a4d4a498b5c3a4d2acef74, type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 272333247081534319, guid: 517d53d0f6a4d4a498b5c3a4d2acef74, type: 3}
