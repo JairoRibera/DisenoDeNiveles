@@ -37,8 +37,9 @@ public class Controller : MonoBehaviour
     public float angulo = 60f;
     private GameObject enemiestatute;
     private Vector3 enemyPos;
-    float maxDistance = 10f;
-
+    public float maxDistance = 10f;
+    public LayerMask Wall;
+    public LayerMask EnemyS;
     // Start is called before the first frame update
     void Start()
     {
@@ -139,27 +140,34 @@ public class Controller : MonoBehaviour
     }
     public void Look()
     {
-        Vector3 rayDirection = transform.forward;
         Vector3 enemydirection = enemyPos - transform.position;
         float angle = Vector3.Angle(transform.forward, enemydirection);
+
         if (angle <= angulo * .5f)
         {
+
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, rayDirection, out hit, maxDistance))
+            if (Physics.Raycast(transform.position, enemydirection.normalized, out hit, maxDistance, Wall))
             {
                 // Si el rayo golpea algo, mostramos el nombre del objeto
                 Debug.Log("El rayo ha tocado: " + hit.collider.name);
+                isLooking = false;
+                
             }
-            isLooking = true;
-            Debug.Log("Esta en el rango");
-            //transform.LookAt(player.transform);
-            //transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+            else
+            {
+                isLooking = true;
+                Debug.Log("Esta en el rango");
+            }
+          
         }
         else
         {
             isLooking = false;
             Debug.Log("No te veo");
+
         }
+        Debug.DrawRay(transform.position, enemydirection.normalized * maxDistance, Color.magenta);
     }
     private void OnDrawGizmos()
     {

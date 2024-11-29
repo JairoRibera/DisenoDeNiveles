@@ -14,7 +14,6 @@ public class EstatuaEnemie : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player");
-        PlayerCo = GameObject.FindWithTag("Player").GetComponent<Controller>();
         PlayerCo = player.GetComponent<Controller>();
     }
 
@@ -28,7 +27,7 @@ public class EstatuaEnemie : MonoBehaviour
             //transform.position = Vector3.MoveTowards(transform.position, PPos.position, speed * Time.deltaTime);
 
         }
-        else if (PlayerCo.isLooking == true)
+        else
         {
             agent.isStopped = true;
         }
