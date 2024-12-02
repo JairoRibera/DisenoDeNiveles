@@ -59,6 +59,10 @@ public class PickItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (currentItem != null)
+        {
+            return;
+        }
         if (other.CompareTag("Item") == true)
         {
             //el truco del dinero es como poner el + (other.gameObject) en el string

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,7 +40,7 @@ public class Controller : MonoBehaviour
     private Vector3 enemyPos;
     public float maxDistance = 10f;
     public LayerMask Wall;
-    public LayerMask EnemyS;
+    //public LayerMask EnemyS;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,9 +53,15 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        enemyPos = enemiestatute.transform.position;
-        Look();
+        if (enemiestatute != null)
+        {
+            enemyPos = enemiestatute.transform.position;
+            Look();
+        }
+        else
+        {
+            Debug.Log("El objeto no está presente o está desactivado.");
+        }
         isRun();
         MovePlayer();
         //HandleSpeed();
@@ -62,15 +69,15 @@ public class Controller : MonoBehaviour
         float _vertical = Input.GetAxisRaw("Vertical");
         input = new Vector3(_horizontal, 0f, _vertical);
         input = transform.TransformDirection(input);
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
-        {
-            _rb.AddForce(Vector3.up * jumpForce);
-            //Cuando saltamos ponemos el doSound en true
-            doSound = true;
-            //Hacemos una corutina para ponerla en false cuando pase un tiempo
-            StartCoroutine(SinSonido());
-        }
-        GroundCheck();
+        //if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+        //{
+        //    _rb.AddForce(Vector3.up * jumpForce);
+        //    //Cuando saltamos ponemos el doSound en true
+        //    doSound = true;
+        //    //Hacemos una corutina para ponerla en false cuando pase un tiempo
+        //    StartCoroutine(SinSonido());
+        //}
+        //GroundCheck();
         float _rotMouseX = Input.GetAxisRaw("Mouse X");
 
         //float _rotMouseY = Input.GetAxisRaw("Mouse Y"); para rotar en el eje y hay que hacerlo con la camara
