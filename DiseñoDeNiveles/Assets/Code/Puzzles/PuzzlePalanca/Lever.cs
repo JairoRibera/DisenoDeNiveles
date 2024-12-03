@@ -6,7 +6,6 @@ public class Lever : MonoBehaviour
 {
     private Animator animPalanca;
     public Lever[] palancaDesactivar = new Lever[4];
-    public Lever[] palancaActivar = new Lever[4];
     public bool isActive;
     public bool canInteract;
     private LeverCodeManager _pCM;
@@ -23,16 +22,14 @@ public class Lever : MonoBehaviour
             animPalanca.SetBool("LeverUp", true);
             foreach (var palanquitauwu in palancaDesactivar)
             {
-                palanquitauwu.desactivar();
-            }
-
-            if (isActive == true)
-            {
-                foreach (var palanquitauwu in palancaActivar)
+                if(isActive == true)
+                {
+                    palanquitauwu.desactivar();
+                }
+                else
                 {
                     palanquitauwu.activar();
                 }
-
             }
         }
     }
